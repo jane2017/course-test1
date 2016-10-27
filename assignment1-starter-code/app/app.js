@@ -11,17 +11,18 @@
         $scope.getDefaultVal=function($scope){
             return 'list comma separated dishes you usually have for lunch';
         };
-        console.log($scope.menu);
-        
+
         $scope.checkIfTooMuch = function () {
             var menuItems = $scope.menu.split(',');
-            if (menuItems.length <= 3) {
+             
+            if (menuItems[0] === '') {
+                $scope.checkResult = 'Please enter data first';
+            } else if (menuItems.length <= 3) {
                 $scope.checkResult = 'enjoy!';
             }
             else {
                 $scope.checkResult = 'too much!';
             }
-        };
-            
+        }; 
     };
 })();
