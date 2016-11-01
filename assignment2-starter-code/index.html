@@ -3,6 +3,7 @@
   <head>
     <title>Shopping List Check Off</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="bower_components/angular/angular.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
@@ -30,21 +31,21 @@
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6"  ng-controller="ToBuyController">
+    <div class="col-md-6"  ng-controller="ToBuyController as buyCtrl">
      <h2>To Buy:</h2>
-     <ul ng-repeat="getToBuyList()">
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+     <ul >
+       <li ng-repeat='item in buyCtrl.getToBuyList()'> {{item.quantity}} {{item.name}} <button class="btn btn-default" ng-click="buyCtrl.boughtItem($index)"><span class="glyphicon glyphicon-ok"></span>Bought</button></li>
      </ul>
-     <div class="emptyMessage">Everything is bought!</div>
+     <div class="emptyMessage" ng-show='!buyCtrl.getToBuyList().length'>Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6" ng-controller="AlreadyBNoughtController">
+    <div class="col-md-6" ng-controller="AlreadyBoughtController as boughtCtrl">
      <h2>Already Bought:</h2>
      <ul>
-       <li>Bought 10 cookies</li>
+       <li ng-repeat='item in boughtCtrl.getBoughtList()'>{{item.quantity}} {{item.name}}</li>    
      </ul>
-     <div class="emptyMessage">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-show='!boughtCtrl.getBoughtList().length'>Nothing bought yet.</div>
     </div>
   </div>
 </div>
