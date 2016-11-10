@@ -1,0 +1,9 @@
+<!--<h3>Title: {{ list.myTitle }}</h3>-->
+<ol>
+  console.log('in html:', items);
+  <li ng-repeat="item in items">
+    {{ item.name }} of {{ item.url }}
+    <button ng-click="onRemove({index: $index});">Remove Item</button>
+  </li>
+</ol>
+<!--<div class="error">OH THE HORROR! COOKIES DETECTED!</div>-->
